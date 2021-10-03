@@ -1,32 +1,60 @@
-const express = require('express');
-// Import and require mysql2
 const mysql = require('mysql2');
 
-const PORT = process.env.PORT || 3001;
-const app = express();
-
-// Express middleware
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-
-// Connect to database needed for homework
 const db = mysql.createConnection(
   {
     host: 'localhost',
-    // MySQL username,
     user: 'root',
-    // MySQL password
     password: 'password',
     database: 'employee_db'
   },
+  console.log(`Connected to the movies_db database.`)
 );
 
-function askWhatDoYouWantToDo() {
-    inquirer.prompt([
-
-    ])
-    .then((response) => {
-        //Switch to correct action
+const chooseAnOption  = () => {
+    inquirer.prompt([{
+        type: "list",
+        message: "Which of these options would you like to do?",
+        name: "option",
+        choices: [
+            "View All Employees",
+            "Add employees",
+            "Update Employee Role",
+            "Add Role",
+            "View All Departments",
+            "Add Department"
+        ],
+    }, ]).then(answer => {
+        
     })
 }
 
+const viewAllEmployees = () => {
+    inquirer.prompt([{
+
+    }])
+}
+const addEmployees = () => {
+    inquirer.prompt([{
+        
+    }])
+}
+const updateEmployee = () => {
+    inquirer.prompt([{
+        
+    }])
+}
+const addRole = () => {
+    inquirer.prompt([{
+        
+    }])
+}
+const viewAllDepartments = () => {
+    inquirer.prompt([{
+        
+    }])
+}
+const addDepartment = () => {
+    inquirer.prompt([{
+        
+    }])
+}
