@@ -10,23 +10,42 @@ const db = mysql.createConnection(
   console.log(`Connected to the movies_db database.`)
 );
 
-const chooseAnOption  = () => {
-    inquirer.prompt([{
+const chooseAnOption = [{
         type: "list",
-        message: "Which of these options would you like to do?",
+        message: "What would you like to do?",
         name: "option",
         choices: [
             "View All Employees",
-            "Add employees",
+            "Add Employees",
             "Update Employee Role",
             "Add Role",
             "View All Departments",
-            "Add Department"
-        ],
-    }, ]).then(answer => {
-        
-    })
-}
+            "Add Department" 
+        ]
+        }];
+
+inquirer.prompt(chooseAnOption).then((answer) => {
+ switch (answer.option) {
+     case "View All Employees":
+         viewAllEmployees();
+         break;
+     case "Add Employees":
+        addEmployees();
+        break;
+    case "Update Employee Role":
+        updateEmployeeRole();
+        break;
+    case "Add Role":
+        addRole();
+        break;
+    case "View All Departments":
+        viewAllDepartments();
+        break;
+    case "Add Department":
+        addDepartment();
+        break;
+ }
+});
 
 const viewAllEmployees = () => {
     inquirer.prompt([{
@@ -38,7 +57,7 @@ const addEmployees = () => {
         
     }])
 }
-const updateEmployee = () => {
+const updateEmployeeRole = () => {
     inquirer.prompt([{
         
     }])
