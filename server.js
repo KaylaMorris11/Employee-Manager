@@ -1,7 +1,7 @@
 const mysql = require('mysql2');
+const inquirer = require('inquirer');
 
-const db = mysql.createConnection(
-  {
+const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'password',
@@ -9,26 +9,34 @@ const db = mysql.createConnection(
   },
   console.log(`Connected to the employee_db database.`)
 );
+db.connect((err) => {
+    if (err) throw err;
+});
 
-const chooseAnOption = [{
+const chooseAnOption = [
+    {
         type: "list",
         message: "What would you like to do?",
         name: "option",
         choices: [
             "View All Employees",
+            "View All Departments",
             "Add Employees",
             "Update Employee Role",
             "Add Role",
-            "View All Departments",
             "Add Department" 
         ]
-        }];
+    },
+        ];
 
 inquirer.prompt(chooseAnOption).then((answer) => {
  switch (answer.option) {
      case "View All Employees":
          viewAllEmployees();
          break;
+     case "View All Departments":
+        viewAllDepartments();
+        break;
      case "Add Employees":
         addEmployees();
         break;
@@ -38,9 +46,6 @@ inquirer.prompt(chooseAnOption).then((answer) => {
     case "Add Role":
         addRole();
         break;
-    case "View All Departments":
-        viewAllDepartments();
-        break;
     case "Add Department":
         addDepartment();
         break;
@@ -48,32 +53,33 @@ inquirer.prompt(chooseAnOption).then((answer) => {
 });
 
 const viewAllEmployees = () => {
-    inquirer.prompt([{
-
-    }])
+    db.query("SELECT * FROM employee"), function(err, results) {
+        console.table(results)
+    }
 }
-const addEmployees = () => {
-    inquirer.prompt([{
+// const addEmployees = () => {
+//     inquirer.prompt([{
         
-    }])
-}
-const updateEmployeeRole = () => {
-    inquirer.prompt([{
+//     }])
+// }
+// const updateEmployeeRole = () => {
+//     inquirer.prompt([{
         
-    }])
-}
-const addRole = () => {
-    inquirer.prompt([{
+//     }])
+// }
+// const addRole = () => {
+//     inquirer.prompt([{
         
-    }])
-}
+//     }])
+// }
 const viewAllDepartments = () => {
-    inquirer.prompt([{
-        
-    }])
+    db.query("SELECT * FROM department", function(err, results) {
+        console.table(results);
+        chooseAnOption();
+    })
 }
-const addDepartment = () => {
-    inquirer.prompt([{
+// const addDepartment = () => {
+//     inquirer.prompt([{
         
-    }])
-}
+//     }])
+// }
