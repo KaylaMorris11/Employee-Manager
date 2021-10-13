@@ -202,10 +202,9 @@ const chooseAnOption = () => {
           choices: ["Sales", "Finance", "Engineering", "Legal"],
         },
         {
-          type:"list",
+          type:"input",
           message: "What is the department id?",
-          name: "department_id",
-          choices: ["Sales", "Finance", "Engineering", "Legal"]
+          name: "department_id"
         }
       ])
       .then(function (answers) {
@@ -238,5 +237,6 @@ const chooseAnOption = () => {
       });
   };
 };
+
 
 chooseAnOption();
