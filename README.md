@@ -5,6 +5,7 @@ This application will allow you to keep track of your employees by ID, Name, Dep
 
 ## Future Development:
 Will be able to update Employee Roles
+
 Will be able to delete employees
 
 ## Video to Application
@@ -15,4 +16,5 @@ https://youtu.be/KZ6_XRvnzsk
 
 ### Technologies Used
 MySQL
+
 Inquirer
